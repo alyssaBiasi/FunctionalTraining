@@ -16,11 +16,19 @@ object OptionalExercises2 {
   val hosts = Map("host1" -> "rea.com", "host2" -> "test.rea.com", "host3" -> "netflix.com")
   val envs = Map("rea.com" -> "prod", "test.rea.com" -> "test", "amazon.com" -> "stage")
 
-  def getEnvForHost(host: String): String = ???
+  def getEnvForHost(host: String): String = {
+    val maybeHost: Option[String] = hosts.get(host)
+    val maybeEnv: Option[String] = maybeHost.flatMap(envs.get(_))
+    maybeEnv.getOrElse("couldn't resolve")
+  }
 
   // See how many ways you can implement this.
   // Will either return "Connected to rea.com" or "not connected"
-  def connectToReaHostsOnly(host: String): String = ???
+  def connectToReaHostsOnly(host: String): String = {
+    val maybeREAHost: Option[String] = hosts.get(host).filter(_.endsWith("rea.com"))
+    if(maybeREAHost.isEmpty) "not connected"
+    else createConnection(maybeREAHost.get)
+  }
 
   def createConnection(domain: String): String = s"connected to $domain"
 

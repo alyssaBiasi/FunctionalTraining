@@ -16,13 +16,13 @@ class OptionalExercises2Spec extends Specification {
       getEnvForHost("host3") === "couldn't resolve"
       getEnvForHost("host4") === "couldn't resolve"
     }
-
   }
 
   "Connect to ReaHostsOnly" should {
     "connected to rea.com for host1" in {
       connectToReaHostsOnly("host1") === "connected to rea.com"
     }
+
     "connected to test.rea.com for host2" in {
       connectToReaHostsOnly("host2") === "connected to test.rea.com"
     }
@@ -35,5 +35,4 @@ class OptionalExercises2Spec extends Specification {
       connectToReaHostsOnly("host4") === "not connected"
     }
   }
-
 }
