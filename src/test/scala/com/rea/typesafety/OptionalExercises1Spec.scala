@@ -9,10 +9,10 @@ class OptionalExercises1Spec extends Specification {
     "be rea.com for host" in {
       getFromConfig("host") should beSome("rea.com")
     }
+
     "be none for other" in {
       getFromConfig("other") should beNone
     }
-
   }
 
   "The length of host name" should {
@@ -24,6 +24,5 @@ class OptionalExercises1Spec extends Specification {
   "The port plus 1000" in {
     portPlus1000() should beSome(9080)
   }
-
 
 }

@@ -4,11 +4,11 @@ package com.rea.typesafety
 object OptionalExercises1 {
   val config = Map[String, String]("host" -> "rea.com", "port" -> "8080")
 
-  def getFromConfig(key: String): Option[String] = ???
+  def getFromConfig(key: String): Option[String] = config.get(key)
 
-  def lengthOfHost(): Option[Int] = ???
+  def lengthOfHost(): Option[Int] = getFromConfig("host").map(_.length)
 
-  def portPlus1000(): Option[Int] = ???
+  def portPlus1000(): Option[Int] = getFromConfig("port").map(_.toInt + 1000)
 }
 
 object OptionalExercises2 {
