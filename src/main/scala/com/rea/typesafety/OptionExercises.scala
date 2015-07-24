@@ -26,7 +26,7 @@ object OptionalExercises2 {
   // Will either return "Connected to rea.com" or "not connected"
   def connectToReaHostsOnly(host: String): String = {
     val maybeREAHost: Option[String] = hosts.get(host).filter(_.endsWith("rea.com"))
-    val connection: Option[String] = maybeREAHost.flatMap(y => Option(createConnection(y)))
+    val connection: Option[String] = maybeREAHost.map(y => createConnection(y))
     connection.getOrElse("not connected")
   }
 
